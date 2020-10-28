@@ -1,10 +1,11 @@
 const sequelize = require('sequelize');
-const dataBase = new sequelize(''); //link de la database 
+const dataBase = new sequelize('mysql://root:@localhost:3306/delilah_resto'); //link de la database 
 
 module.exports = {
+
     createProducto: (req, res) =>{
         dataBase.query(
-            'INSERT INTO productos (producto, descripcion, precio, disponibilidad, id_imagen) VALUES (:producto, :descripcion, :precio, :disponibilidad, :id_imagen)',{
+            'INSERT INTO productos (producto, description, precio, disponibilidad, image) VALUES (:producto, :description, :precio, :disponibilidad, :image)',{
                 replacements: req.body
             }).then(result => console.log(result) || res.status(200).json('Producto Agregado'))
               .catch(error => console.log(error) || res.status(400).send('Dato Invalido'))
@@ -42,11 +43,8 @@ module.exports = {
 
     deleteProducto: (req, res) => {
         const id = req.params.id   
-            DataBase.query(`DELETE FROM productos WHERE id = ${id}`,{type: sequelize.QueryTypes.DELETE})
+            dataBase.query(`DELETE FROM productos WHERE id = ${id}`,{type: sequelize.QueryTypes.DELETE})
             .then(result => (console.log(result)) || res.status(200).json("Producto Eliminado"))
             .catch(error => console.log(error) || res.status(400).send('Dato Invalido'))               
     }
-
-
-
 }
