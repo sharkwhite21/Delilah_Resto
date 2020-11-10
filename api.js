@@ -1,6 +1,6 @@
 const server = require('express')();
 const bodyParserJson = require('body-parser').json();
-const { checkIdProducto, validacionUser, onlyAdmin, userOK, validarIdPedido} =require('./middlewares');
+const { checkIdProducto, validacionUser, onlyAdmin, userOK, validarIdPedido } = require('./middlewares');
 const { register, login, getCliente, updateCliente, deleteCliente } = require('./clientes');
 const { createProducto, deleteProducto, updateProducto, getProductos } = require('./productos');
 const { postOrden, getOrdenes,getOrden, updateOrden, deleteOrden } = require('./pedidos');
@@ -14,19 +14,19 @@ server.use(function (err,req,res,next) {
 });
 
 // Clientes
-server.post('/clientes', register);
+server.post('/clientes/register', register);
 server.post('/clientes/login', validacionUser, login);
 server.get('/clientes', onlyAdmin, getCliente);
 server.put('/clientes', userOK, updateCliente);
 server.delete('/clientes/:id', onlyAdmin, deleteCliente);
 
 // Productos
-server.post('/productos', onlyAdmin, createProducto);
+server.post('/productos/create', onlyAdmin, createProducto);
 server.get('/productos', getProductos);
 server.put('/productos/:id', checkIdProducto, onlyAdmin, updateProducto);
 server.delete('/productos/:id',  checkIdProducto, onlyAdmin, deleteProducto);
 
-// // Orden
+// Pedidos
 server.post('/pedidos', userOK, postOrden);
 server.get('/pedidos', onlyAdmin, getOrdenes);
 server.get('/pedidos/:id', userOK, getOrden);

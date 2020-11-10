@@ -1,4 +1,5 @@
 CREATE DATABASE delilah_resto;
+
 CREATE TABLE Clientes( id int PRIMARY KEY AUTO_INCREMENT, user varchar(255) , pass varchar(255), name varchar(255), lastName varchar(255), email varchar(255), phone int, direccion varchar(255), is_admin tinyint(1) DEFAULT 0);
 
 INSERT INTO Clientes( user, pass, name , lastName , email, phone, direccion, is_admin)
@@ -27,13 +28,25 @@ INSERT INTO estado_id(estado) VALUE ('Nuevo'),('Confirmado'),('Enviado'),('Entre
 CREATE TABLE Pedidos (id int PRIMARY KEY AUTO_INCREMENT, estado_id int DEFAULT 1, Fecha_Hora datetime TIMESTAMP DEFAULT CURRENT_TIMESTAMP, id_pago int, id_cliente int);
 
 INSERT INTO Pedidos (estado_id, Fecha_Hora, id_pago, id_cliente) VALUES
-( 1, '2020-10-27 01:40:01', 1, 1),
-( 1, '2020-10-27 01:40:33', 1, 3),
-( 1, '2020-10-27 01:40:48', 2, 2),
-( 2, '2020-10-27 01:40:50', 2, 2),
-( 1, '2020-10-27 19:24:01', 2, 2),
-( 1, '2020-10-27 19:24:51', 3, 2),
-( 1, '2020-10-27 19:25:22', 1, 2);
+( 1, '2020-10-27 20:09:00', 1, 1),
+( 2, '2020-10-27 20:09:42', 1, 1),
+( 1, '2020-10-27 20:17:39', 1, 1),
+( 1, '2020-10-27 20:28:10', 1, 1),
+( 1, '2020-10-27 16:39:19', 1, 5),
+( 1, '2020-10-27 16:42:17', 2, 5),
+( 1, '2020-10-27 16:53:54', 2, 5),
+( 1, '2020-10-27 16:56:49', 2, 5);
 
 
 CREATE TABLE Producto_Pedido (id int PRIMARY KEY AUTO_INCREMENT, cantidad int,  id_producto int, id_pedido int);
+INSERT INTO Pedidos (cantidad, id_producto,id_pedido) VALUES
+(2,2,4),
+(2,2,5),
+(1,4,5),
+(3,3,6),
+(1,4,6),
+(3,3,7),
+(1,4,7),
+(3,3,8),
+(1,4,8),
+(1,1,8);

@@ -19,9 +19,9 @@ module.exports = {
     },
 
     updateProducto: (req, res) =>{
-        const id = req.body.id;
+        const id = req.params.id;
         const nuevoPrecio = req.body.precio;
-        const status = req.body.status;
+        const status = req.body.disponibilidad;
             if(req.body.precio){
                 if(req.body.disponibilidad == 0||1){
                     dataBase.query(`UPDATE productos SET precio = ${nuevoPrecio}, disponibilidad = ${status} WHERE id = ${id}`,{type: sequelize.QueryTypes.SET})

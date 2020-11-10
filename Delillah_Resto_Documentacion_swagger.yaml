@@ -1,0 +1,409 @@
+swagger: "2.0"
+info:
+  description: "API para la aplicacion del restaurante Dellilah Resto, donde se puede crear, modificar y eliminar, la tabla de datos donde se encuentra alojados la informacion sobre los clientes del restaurante, los productos del mismo, y hacerle seguimiento de los pedidos realizados, y hacerle seguimiento de los mismos."
+  version: "1.0.0"
+  title: "API Dellilah Resto"
+  contact:
+    email: "mbaldovino44@gmail.com"
+tags:
+- name: "Clientes"
+- name: "Productos"
+- name: "Pedidos"
+schemes:
+- "https"
+paths:
+  /clientes/register:
+    post:
+      tags:
+      - "Clientes"
+      summary: "Creacion usuario"
+      description: ""
+      operationId: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Formato para agregar  un usuario a la base de datos"
+        required: true
+        schema:
+          $ref: "#/definitions/Clientesre"
+      responses:
+        "400":
+          description: "Dato Invalido"
+        "200":
+          description : "Su usuario ha sido creado satisfactoriamente!"
+  /clientes/login:
+    post:
+      tags:
+      - "Clientes"
+      summary: "Logueo del usuario"
+      description: ""
+      operationId: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Formato de logueo"
+        required: true
+        schema:
+          $ref: "#/definitions/Clienteslo"
+      responses:
+        "400":
+          description: "Dato Invalido"
+        "200":
+          description : "Token en formato JWT"
+  /clientes:
+    get:
+      tags:
+      - "Clientes"
+      summary: "Extraer todos los usuarios que existen"
+      description: "Solo realizado por administrador, enviada por Bearer Token"
+      operationId: ""
+      responses:
+        "400":
+          description: "No es administrador"
+        "405":
+          description: "No se puede validar el user"
+      security:
+        - bearerAuth: []
+    put:
+      tags:
+      - "Clientes"
+      summary: " Modificar clientes"
+      description: "Cliente modifica sus datos"
+      operationId: "updateUser"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Updated user object"
+        required: true
+        schema:
+          $ref: "#/definitions/Clientesup"
+      responses:
+        "200":
+          description: "Su usuario ha sido Actualizado satisfactoriamente!"
+        "404":
+          description: "Dato Invalido"
+        "405":
+          description: "No se puede validar el user"
+      security:
+        - bearerAuth: []
+  /clientes/{id}:
+    delete:
+      tags:
+      - "Clientes"
+      summary: "Delete user"
+      description: "Solo puede ser realizado por el administrador"
+      operationId: "deleteUser"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID Para borrar el usuario"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "Cliente Eliminado"
+        "400":
+          description: "No es administrador"
+        "404":
+          description: "Dato Invalido"
+      security:
+        - bearerAuth: []
+  /productos/create:
+    post:
+      tags:
+      - "Productos"
+      summary: "Creacion de producto"
+      description: "Solo es admitido para administradores"
+      operationId: ""
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Formato para agregar  un producto a la base de datos"
+        required: true
+        schema:
+          $ref: "#/definitions/Productos"
+      responses:
+        "400":
+          description: "Dato Invalido"
+        "200":
+          description : "Su usuario ha sido creado satisfactoriamente!"
+      security:
+        - bearerAuth: []
+  /productos:
+    get:
+      tags:
+      - "Productos"
+      summary: "Lista de productos"
+      description: "El usuario puedo obtener todos los poductos que existen"
+      operationId: ""
+      produces:
+      - "application/json"
+      
+      responses:
+        "400":
+          description: "Dato Invalido"
+        "200":
+          description : "lista de productos."
+      security:
+        - bearerAuth: []
+  /productos/{id}:
+    put:
+      tags:
+      - "Productos"
+      summary: "Modificacion de productos"
+      description: "Para modificar las caracteristica de un producto. Accion realizada por un administrador"
+      operationId: ""
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "name that need to be updated"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Updated user object"
+        required: true
+        schema:
+          $ref: "#/definitions/Productosup"
+      responses:
+        "400":
+          description: "Invalid user supplied"
+        "404":
+          description: "User not found"
+      security:
+        - bearerAuth: []
+    delete:
+      tags:
+      - "Productos"
+      summary: "Eliminacion de productos"
+      description: "Para eliminar  un producto. Realizado por un Administrador"
+      operationId: ""
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "name that need to be updated"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "Producto Eliminado"
+        "400":
+          description: "Dato Invalido"
+      security:
+        - bearerAuth: []
+  /pedidos:
+    post:
+      tags:
+      - "Pedidos"
+      summary: "Realizar pedido"
+      description: ""
+      operationId: ""
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "En el formato items, se debe enviar un objeto, en donde  cada posicion, tiene dos variables, tanto la cantidad el producto, como su id, items: [ { cantidad : 3, id_producto: 3},{cantidad : 1,id_producto: 4 } ]"
+        required: true
+        schema:
+          $ref: "#/definitions/postOrden"
+      responses:
+        "200":
+          description: "Pedido Realizado"
+        "400":
+          description: "Datos ingresados incorrectos"
+      security:
+        - bearerAuth: []
+    get:
+      tags:
+      - "Pedidos"
+      summary: "Retornar las ordenes en proceso"
+      description: "Accion realizada por un administrador"
+      operationId: ""
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "Lista de ordenes"
+        "400":
+          description: "No hay nada que mostrar."
+      security:
+        - bearerAuth: []
+  /pedidos/{id}:
+    get:
+      tags:
+      - "Pedidos"
+      summary: "Traer informacion del pedido mediante su ID"
+      description: ""
+      operationId: ""
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of pet that needs to be fetched"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "Informacion del Pedido"
+        "400":
+          description: "'No hay Pedido que mostrar."
+      security:
+        - bearerAuth: []
+    put:
+      tags:
+      - "Pedidos"
+      summary: "Modificacion del estado de un pedido"
+      description: "Solo puede realizarse por un Administrador"
+      operationId: ""
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "name that need to be updated"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Updated user object"
+        required: true
+        schema:
+          $ref: "#/definitions/Pedidoup"
+      responses:
+        "400":
+          description: "Invalid user supplied"
+        "404":
+          description: "User not found"
+      security:
+        - bearerAuth: []
+    delete:
+      tags:
+      - "Pedidos"
+      summary: "Borrar un pedido por su  ID"
+      description: "Solo puede realizarse por un administrador"
+      operationId: "deleteOrder"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "ID of the order that needs to be deleted"
+        required: true
+        type: "integer"
+        minimum: 1.0
+        format: "int64"
+      responses:
+        "400":
+          description: "No se puede eliminar un pedido ya en proceso, cambiar el estado a Cancelado"
+      security:
+        - bearerAuth: []
+
+components:
+  securitySchemes:
+    bearerAuth:            
+      type: https
+      scheme: bearer
+      bearerFormat: JWT 
+    
+definitions:
+  Clientesre:
+    type: "object"
+    properties:
+      user:
+        type: "string"
+        description : "Nickname de usuario"
+      pass:
+        type: "string"
+        description : "Password"
+      name:
+        type: "string"
+      lastName:
+        type: "string"
+      email:
+        type: "string"
+      phone:
+        type: "integer"
+        format: "int64"
+      direccion:
+        type: "string"
+  Clienteslo:
+        type: "object"
+        properties:
+          user:
+            type: "string"
+            description : "Nickname de usuario"
+          pass:
+            type: "string"
+            description : "Password"
+  Clientesup:
+        type: "object"
+        properties:
+          phone:
+            type: "integer"
+            format: "int64"
+          email:
+            type: "string"
+          direccion:
+            type: "string"
+  Productos:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        fpormat: "int64"
+      name:
+        type: "string"
+  Productosup:
+    type: "object"
+    properties:
+      precio:
+        type: "integer"
+        format: "int64"
+      disponibilidad:
+        type: "integer"
+        format: "int64"
+  postOrden:
+    type: "object"
+    properties:
+      id_pago:
+        type: "integer"
+        format: "int64"
+      items: 
+        type: "object"
+        properties:
+          cantidad :
+            type: "integer"
+            format: "int64"
+          id_producto:
+            type: "integer"
+            format: "int64"
+  Pedidoup:
+    type: "object"
+    properties:
+      estado_id:
+        type: "integer"
+        format: "int64"

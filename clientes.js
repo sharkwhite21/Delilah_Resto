@@ -8,7 +8,7 @@ module.exports = {
 
     register: (req, res) => {
         dataBase.query(
-            'INSERT INTO Clientes (user, pass, name, lastName, email, phone, direccion, is_admin) VALUES ( :user, :pass, :name, :lastName, :email, :telefono, :direccion, 0)',{
+            'INSERT INTO Clientes (user, pass, name, lastName, email, phone, direccion ) VALUES ( :user, :pass, :name, :lastName, :email, :phone, :direccion)',{
                 replacements: req.body
             }).then(result => console.log(result) || res.status(200).json('Su usuario ha sido creado satisfactoriamente!'))
             .catch(error => console.log(error) || res.status(400).send('Dato Invalido'))
@@ -19,7 +19,6 @@ module.exports = {
         const reqPass = req.body.pass;
         const password = await dataBase.query(`SELECT id, pass FROM Clientes WHERE user = "${reqUsuario}"`, { type: sequelize.QueryTypes.SELECT });
         const isAdmin = await dataBase.query(`SELECT id, is_admin FROM Clientes WHERE user = "${reqUsuario}"`, { type: sequelize.QueryTypes.SELECT });
-        console.log(isAdmin);
         const passOk = password[0].pass;
         const adminOk = isAdmin.find(item => item.is_admin === 1);
 
@@ -36,7 +35,7 @@ module.exports = {
             }
         }
         else{
-            res.json('Usuario o pass incorrecta!');
+            res.status(400).send('User y/o Pass no compatibles.');
         }
     },
     
@@ -63,6 +62,6 @@ module.exports = {
         const id = req.params.id;
         dataBase.query(`DELETE FROM Clientes WHERE id = ${id}`,{type: sequelize.QueryTypes.DELETE})
             .then(result => (console.log(result)) || res.status(200).json("Cliente Eliminado"))
-            .catch(error => console.log(error) || res.status(400).send('Invalid data'))  
+            .catch(error => console.log(error) || res.status(400).send('Dato Invalido'))  
     }
 }

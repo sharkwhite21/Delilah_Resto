@@ -32,15 +32,15 @@ module.exports = {
                 if(req.user.user.is_admin === 1){
                     return next()
                 } else{ 
-                    res.json({error: 'Solo administradores'})
+                    res.status(400).send('No es administrador');
                 }
 
             }
         } catch (err){
-            res.json({error: 'error al validar user'})
+            res.status(405).send('No se puede validar el user');
         }
 
-    },
+    }, 
 
     userOK: (req, res, next) => {
         try{
@@ -51,7 +51,7 @@ module.exports = {
                 return next()
             }
         } catch (err){
-            res.json({error: 'error al validar user'})
+            res.status(405).send('No se puede validar el user');
         }
     },
 
