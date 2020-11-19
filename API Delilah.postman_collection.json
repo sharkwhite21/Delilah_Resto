@@ -1,0 +1,524 @@
+{
+	"info": {
+		"_postman_id": "8c965b00-894a-43e0-b415-08b0491caf53",
+		"name": "API Delilah",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "localhost:3001/productos/create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJpc19hZG1pbiI6MX0sImlzQWRtaW4iOlt7ImlkIjoxLCJpc19hZG1pbiI6MX1dLCJpYXQiOjE2MDM4MzU0ODl9.otEZGyl_VO3O_rnm7SLwqBiN5Xi0tYnnFeqy3YDO-gQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"producto\" : \"Hamburguesa Argentinda\",\r\n    \"description\" : \"Hamburguesa con chorizo, chimichurri, salsas.\",\r\n    \"precio\": 25.00,\r\n    \"disponibilidad\" : 1,\r\n    \"image\": \"HamburArg.jpg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/productos/create",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"productos",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3001/productos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJpc19hZG1pbiI6MX0sImlzQWRtaW4iOlt7ImlkIjoxLCJpc19hZG1pbiI6MX1dLCJpYXQiOjE2MDM4MzU0ODl9.otEZGyl_VO3O_rnm7SLwqBiN5Xi0tYnnFeqy3YDO-gQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/productos",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3001/productos/2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJpc19hZG1pbiI6MX0sImlzQWRtaW4iOlt7ImlkIjoxLCJpc19hZG1pbiI6MX1dLCJpYXQiOjE2MDM4MzU0ODl9.otEZGyl_VO3O_rnm7SLwqBiN5Xi0tYnnFeqy3YDO-gQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"disponibilidad\" : 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/productos/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"productos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3001/productos/5",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJpc19hZG1pbiI6MX0sImlzQWRtaW4iOlt7ImlkIjoxLCJpc19hZG1pbiI6MX1dLCJpYXQiOjE2MDM4MzU0ODl9.otEZGyl_VO3O_rnm7SLwqBiN5Xi0tYnnFeqy3YDO-gQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/productos/5",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"productos",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Clientes",
+			"item": [
+				{
+					"name": "localhost:3001/clientes",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJpc19hZG1pbiI6MX0sImlzQWRtaW4iOlt7ImlkIjoxLCJpc19hZG1pbiI6MX1dLCJpYXQiOjE2MDM4MzU0ODl9.otEZGyl_VO3O_rnm7SLwqBiN5Xi0tYnnFeqy3YDO-gQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/clientes",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3001/clientes/login Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"Marbal\",\r\n    \"pass\": \"qwerty123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/clientes/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"clientes",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3001/clientes/login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"Sebas41\",\r\n    \"pass\": \"Themaster32\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/clientes/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"clientes",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3001/clientes/register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": \"Alibaba\",\r\n    \"pass\": \"ladrones40\",\r\n    \"name\": \"Ali shaled\",\r\n    \"lastName\" : \"Fakir\",\r\n    \"email\": \"Alifa@gmail.com\",\r\n    \"phone\": 3245214,\r\n    \"direccion\" : \"el pozo de los leones\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/clientes/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"clientes",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3001/clientes/8",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJpc19hZG1pbiI6MX0sImlzQWRtaW4iOlt7ImlkIjoxLCJpc19hZG1pbiI6MX1dLCJpYXQiOjE2MDU4Mjg3MTV9.cZIw_bc0L6qQqhF7-LS2z2jlFMav6iorTw3PoeEKAoY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/clientes/8",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"clientes",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3001/clientes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJpc19hZG1pbiI6MX0sImlzQWRtaW4iOlt7ImlkIjoxLCJpc19hZG1pbiI6MX1dLCJpYXQiOjE2MDU4Mjg3MTV9.cZIw_bc0L6qQqhF7-LS2z2jlFMav6iorTw3PoeEKAoY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"phone\": 300686,\r\n  \"email\": \"mbaldovino44@yahoo\",\r\n  \"direccion\": \"Av siempre Live\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/clientes",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Pedidos",
+			"item": [
+				{
+					"name": "localhost:3001/pedidos/6",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJpc19hZG1pbiI6MX0sImlzQWRtaW4iOlt7ImlkIjoxLCJpc19hZG1pbiI6MX1dLCJpYXQiOjE2MDU4Mjg3MTV9.cZIw_bc0L6qQqhF7-LS2z2jlFMav6iorTw3PoeEKAoY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/pedidos/6",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"pedidos",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3001/pedidos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo1LCJwYXNzIjoid2lndWFyZHVuIn0sImlhdCI6MTYwMzkyMDc5NX0.20oDg7ZpdSK3U9EUiScoUpfp2o3JpyHWGCpw6RS7eMg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_pago\" : 2,\r\n    \"items\":[{\r\n        \"cantidad\" : 3,\r\n        \"id_producto\": 3\r\n    },\r\n    {\r\n        \"cantidad\" : 1,\r\n        \"id_producto\": 4\r\n    },\r\n        {\r\n        \"cantidad\" : 1,\r\n        \"id_producto\": 1\r\n    }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/pedidos",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"pedidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3001/pedidos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo1LCJwYXNzIjoid2lndWFyZHVuIn0sImlhdCI6MTYwMzkyMDc5NX0.20oDg7ZpdSK3U9EUiScoUpfp2o3JpyHWGCpw6RS7eMg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/pedidos",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"pedidos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3001/pedidos/2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJpc19hZG1pbiI6MX0sImlzQWRtaW4iOlt7ImlkIjoxLCJpc19hZG1pbiI6MX1dLCJpYXQiOjE2MDM4MzU0ODl9.otEZGyl_VO3O_rnm7SLwqBiN5Xi0tYnnFeqy3YDO-gQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3001/pedidos/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"pedidos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:3001/pedidos/2",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJpc19hZG1pbiI6MX0sImlzQWRtaW4iOlt7ImlkIjoxLCJpc19hZG1pbiI6MX1dLCJpYXQiOjE2MDM4MzU0ODl9.otEZGyl_VO3O_rnm7SLwqBiN5Xi0tYnnFeqy3YDO-gQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"estado_id\" : 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/pedidos/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"pedidos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

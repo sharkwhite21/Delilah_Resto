@@ -21,7 +21,7 @@ server.put('/clientes', userOK, updateCliente);
 server.delete('/clientes/:id', onlyAdmin, deleteCliente);
 
 // Productos
-server.post('/productos/create', onlyAdmin, createProducto);
+server.post('/productos/create', onlyAdmin, createProducto); 
 server.get('/productos', getProductos);
 server.put('/productos/:id', checkIdProducto, onlyAdmin, updateProducto);
 server.delete('/productos/:id',  checkIdProducto, onlyAdmin, deleteProducto);

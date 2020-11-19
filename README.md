@@ -30,6 +30,7 @@ Se utilizan las siguientes tecnologias:
   Toda las respuestas serán un objeto json.
 
 # ENDPOINTS:
+  Se muestra una coleccion de API Postman, en donde se puede muestra como interactuar con la API de manera mas intuitiva.
   A clientes: 
     - post/clientes/register
     - post/clientes/login

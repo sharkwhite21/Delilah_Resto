@@ -46,7 +46,7 @@ module.exports = {
     },
 
     updateCliente: (req, res) => {
-        const id = req.boy.id;
+        const id = req.user.user.id;
         const newPhone = req.body.phone;
         const newDireccion = req.body.direcion;
         const newEmail = req.body.newEmail;

@@ -224,7 +224,7 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "En el formato items, se debe enviar un objeto, en donde  cada posicion, tiene dos variables, tanto la cantidad el producto, como su id, items: [ { cantidad : 3, id_producto: 3},{cantidad : 1,id_producto: 4 } ]"
+        description: "En el formato items, se debe enviar un objeto, en donde  cada posicion, tiene dos variables, tanto la cantidad el producto, como su id_pago ( donde 1 es contado, 2 credito) , items: [ { cantidad : 3, id_producto: 3},{cantidad : 1,id_producto: 4 } ]"
         required: true
         schema:
           $ref: "#/definitions/postOrden"
@@ -372,10 +372,17 @@ definitions:
   Productos:
     type: "object"
     properties:
-      id:
+      producto:
+        type: "string"
+      description:
+        type: "string"
+      precio:
         type: "integer"
         fpormat: "int64"
-      name:
+      disponibilidad:
+        type: "integer"
+        fpormat: "int64"
+      image:
         type: "string"
   Productosup:
     type: "object"
