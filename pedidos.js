@@ -21,8 +21,8 @@ module.exports ={
     },
 
     getOrdenes: async (req,res) =>{
-        const allOrders = await dataBase.query(`SELECT pedidos.id, pedidos.estado_id, pedidos.Fecha_Hora, productos.producto, producto_pedido.cantidad, productos.precio, Clientes.user, Clientes.phone, Clientes.direccion, Clientes.email, Clientes.name, Clientes.lastName
-         FROM pedidos 
+        const allOrders = await dataBase.query(`SELECT pedidos.id, pedidos.estado_id, pedidos.id_pago, pedidos.Fecha_Hora, productos.producto, producto_pedido.cantidad, productos.precio, Clientes.user, Clientes.phone, Clientes.direccion, Clientes.email, Clientes.name, Clientes.lastName
+         FROM Pedidos 
          JOIN producto_pedido ON pedidos.id = producto_pedido.id_pedido
          JOIN Clientes ON pedidos.id_cliente = Clientes.id 
          JOIN productos ON producto_pedido.id_producto = productos.id 
